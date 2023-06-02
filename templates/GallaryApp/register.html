@@ -1,0 +1,48 @@
+{% extends 'GallaryApp/base.html' %}
+{% load static %}
+{% block css %}
+{% endblock css %}
+
+{% block js %}
+{% endblock js %}
+
+{% block title %}
+<title>Register Page</title>
+{% endblock title %}
+
+{% block body %}
+<div class="container mt-5">
+
+    <!-- heading container -->
+    <div class="container p-1 bg-primary text-center rounded-5">
+        <h1 class="dispaly-5">Register Form</h1>
+    </div>
+
+    <!-- register container -->
+    <div class="container mt-2 p-5 w-75 shadow ">
+
+        <form action="{% url 'register' %}" method="post">
+            {% csrf_token %}
+
+            {% for fm in forms %}
+
+            <div class="mb-3">
+                {{fm.label_tag}}
+                {{fm}}
+                <span style="color:red">{{fm.errors}}</span>
+                
+            </div>
+            {% endfor %}
+
+            <div class="mb-3 text-center">
+                <input type="submit" value="Register" class="btn btn-success btn-lg">
+
+                <a href="{% url 'home' %}" class="btn btn-danger btn-lg">cancel</a>
+            </div>
+        </form>
+
+    </div>
+
+
+</div>
+{% endblock body %}
